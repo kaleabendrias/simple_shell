@@ -33,7 +33,8 @@ This project is a simple shell command-line interpreter designed in the C progra
 
 4. To exit the shell, enter the exit command or press Ctrl+D.
 
-![Screenshot 2023-05-23 091112](https://github.com/kaleabendrias/simple_shell/assets/125442134/a29ba852-04f7-4455-89ed-6f3463f7edcc)
+
+![Screenshot 2023-05-23 091117](https://github.com/kaleabendrias/simple_shell/assets/125442134/bd472190-c0eb-4c76-a273-aa027920803b)
 
 
 # Contributing
