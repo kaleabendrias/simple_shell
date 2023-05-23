@@ -59,3 +59,32 @@ unsigned int isDelimiter(char c, const char *delimiters)
 	return (0);
 }
 
+/**
+ * _atoi - converts string to int
+ * @s: the string to be converted
+ * Return: int
+ */
+
+int _atoi(const char *s)
+{
+	int res, sign, idx;
+
+	res = 0;
+	sign = 1;
+	idx = 0;
+
+	if (s[0] == '-')
+	{
+		sign = -1;
+		idx++;
+	}
+	while (s[idx] != '\0')
+	{
+		if (s[idx] >= '0' && s[idx] <= '9')
+			res = res * 10 + (s[idx] - '0');
+		else
+			break;
+		idx++;
+	}
+	return (res * sign);
+}

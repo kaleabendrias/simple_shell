@@ -22,6 +22,8 @@ void exe(char **argv);
 
 char *get_loc(char *command);
 
+int _atoi(const char *s);
+
 char *_strchr(const char *str, int character);
 
 unsigned int isDelimiter(char c, const char *delimiters);
