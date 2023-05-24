@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 	{
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, PROMPT, _strlen(PROMPT));
-		n_char = getline(&getcom, &n, stdin);
+		n_char = _getline(&getcom, &n, stdin);
 		if (n_char == -1)
 			break;
 		argc = tokenize_input(getcom, args);
