@@ -5,7 +5,7 @@
  * tokenize_input - tokenizes the commands
  * @input: the total comm
  * @args: args
- * Return: Always
+ * Return: Alway
  */
 
 int tokenize_input(char *input, char **args)
