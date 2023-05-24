@@ -65,15 +65,12 @@ void execute_command(char *actual_command, char **args, char *command)
 void handle_command(char *command, char **args)
 {
 	char *actual_command;
-	int status;
 
 	if (_strcmp(command, "exit") == 0)
 	{
 		if (args[1] != NULL)
 		{
-			status = _atoi(args[1]);
-			free(command);
-			exit(status);
+			_exitt(command, args);
 		}
 		else
 		{
@@ -101,6 +98,38 @@ void handle_command(char *command, char **args)
 		}
 		else
 			execute_command(actual_command, args, command);
+	}
+}
+/**
+  * _exitt - exit cmd
+  * @command: command
+  * @args: arguments
+  */
+void _exitt(char *command, char **args)
+{
+	int status, i, invalid_arg = 0;
+
+	for (i = 0; args[1][i] != '\0'; i++)
+	{
+		if (!isdigit(args[1][i]))
+		{
+			invalid_arg = 1;
+			break;
+		}
+	}
+	if (invalid_arg || _atoi(args[1]) < 0)
+	{
+		write(STDERR_FILENO, shell, _strlen(shell));
+		write(STDERR_FILENO, ": 1: exit: Illegal number: ", 27);
+		write(STDERR_FILENO, args[1], _strlen(args[1]));
+		write(STDERR_FILENO, "\n", 1);
+		status = 2;
+	}
+	else
+	{
+		status = _atoi(args[1]);
+		free(command);
+		exit(status);
 	}
 }
 
