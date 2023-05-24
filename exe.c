@@ -26,7 +26,7 @@ void env_ex(void)
  * @actual_command: full path command
  * @args: args
  * @command: the command
- * Return: non
+ * Return: none
  */
 
 void execute_command(char *actual_command, char **args, char *command)
