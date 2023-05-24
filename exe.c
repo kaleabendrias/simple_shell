@@ -56,7 +56,7 @@ void execute_command(char *actual_command, char **args, char *command)
 }
 
 /**
- * handle_command - handles the command before passing it to exec
+ * handle_command - handles the command before passing it to exe
  * @command: command
  * @args: args
  * Return: none
