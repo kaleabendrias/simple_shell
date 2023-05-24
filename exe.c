@@ -126,12 +126,14 @@ void _exitt(char *cmd, char **args, int c)
 	{
 		fprintf(stderr, "%s: %d: %s: Illegal number: %s\n", shell, c, cmd, args[1]);
 		status = 2;
+		if (!isatty(STDIN_FILENO))
+			exit(status);
 	}
 	else
 	{
 		status = _atoi(args[1]);
-		free(cmd);
 		exit(status);
+		free(cmd);
 	}
 }
 
