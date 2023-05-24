@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 	(void)argv;
 
 	signal(SIGINT, handle_signal);
-	shell = argv[0];
+	/*shell = argv[0];*/
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
