@@ -38,7 +38,7 @@ void handle_signal(int signal)
 }
 
 /**
- * main - main entry point
+ * main - entry point
  * @argc: arguments
  * @argv: pointers
  * Return: Always
