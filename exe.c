@@ -65,14 +65,15 @@ void execute_command(char *actual_command, char **args, char *command)
 void handle_command(char *command, char **args)
 {
 	char *actual_command;
-	static int counter;
+	int status;
 
-	counter++;
 	if (_strcmp(command, "exit") == 0)
 	{
 		if (args[1] != NULL)
 		{
-			_exitt(command, args, counter);
+			status = _atoi(args[1]);
+			free(command);
+			exit(status);
 		}
 		else
 		{
@@ -92,9 +93,7 @@ void handle_command(char *command, char **args)
 	{
 		actual_command = get_loc(command);
 		if (!actual_command)
-		{
-			fprintf(stderr, "%s: %d: %s: not found\n", shell, counter, command);
-		}
+			write(STDOUT_FILENO, "Error: Command not found\n", 25);
 		else if (access(actual_command, X_OK) == -1)
 		{
 			free(actual_command);
@@ -102,36 +101,6 @@ void handle_command(char *command, char **args)
 		}
 		else
 			execute_command(actual_command, args, command);
-	}
-}
-/**
-  * _exitt - exit cmd
-  * @cmd: command
-  * @args: arguments
-  * @c: counter
-  */
-void _exitt(char *cmd, char **args, int c)
-{
-	int status, i, invalid_arg = 0;
-
-	for (i = 0; args[1][i] != '\0'; i++)
-	{
-		if (!isdigit(args[1][i]))
-		{
-			invalid_arg = 1;
-			break;
-		}
-	}
-	if (invalid_arg || _atoi(args[1]) < 0)
-	{
-		fprintf(stderr, "%s: %d: %s: Illegal number: %s\n", shell, c, cmd, args[1]);
-		status = 2;
-	}
-	else
-	{
-		status = _atoi(args[1]);
-		exit(status);
-		free(cmd);
 	}
 }
 
