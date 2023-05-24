@@ -65,32 +65,15 @@ void execute_command(char *actual_command, char **args, char *command)
 void handle_command(char *command, char **args)
 {
 	char *actual_command;
-	int status, i, in_ar = 0;
+	int status;
 
 	if (_strcmp(command, "exit") == 0)
 	{
 		if (args[1] != NULL)
 		{
-			for (i = 0; args[1][i] != '\0'; i++)
-			{
-				if (!isdigit(args[1][i]))
-				{
-					in_ar = 1;
-					break;
-				}
-			}
-			if (in_ar || _atoi(args[1]) < 0)
-			{
-				write(STDERR_FILENO, "exit: Illegal number: ", 22);
-				write(STDERR_FILENO, args[1], _strlen(args[1]));
-				write(STDERR_FILENO, "\n", 1);
-			}
-			else
-			{
-				status = _atoi(args[1]);
-				free(command);
-				exit(status);
-			}
+			status = _atoi(args[1]);
+			free(command);
+			exit(status);
 		}
 		else
 		{
